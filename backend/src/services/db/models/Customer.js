@@ -8,6 +8,7 @@ const {Schema} = db
 const schema = new Schema({
   details: {type: Person, required: true},
   location: {type: Location, default: null},
+  destination: {type: Location, default: null},
 })
 
 module.exports = db.model('Customer', schema)
