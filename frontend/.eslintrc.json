@@ -1,0 +1,6 @@
+{
+  "extends": "@sunshinesmile/eslint-config-react",
+  "env": {
+    "jest": true
+  }
+}
