@@ -20,6 +20,6 @@ module.exports = envalid.cleanEnv(process.env, {
     // it should be injected as environment variables
     // committing the string for simplicity of development
     default:
-      'mongodb+srv://simulation_user:simulation_pass@taxicluster-echcb.mongodb.net/test?retryWrites=true',
+      'mongodb+srv://simulation_user:simulation_pass@taxicluster-echcb.mongodb.net/mobility-platform-simulation?retryWrites=true',
   }),
 })
