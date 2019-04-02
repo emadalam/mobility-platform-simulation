@@ -37,9 +37,17 @@ const App = ({classes}) => {
   const [data, setData] = useState(null)
   const [socket] = useSocket()
 
-  socket.on('test_data', ({payload}) => {
-    setData(payload)
+  // test socket data
+  socket.on('initial_data', args => {
+    setData(args)
   })
+  socket.on('cab_update', args => {
+    console.log('Cab update event', args)
+  })
+  socket.on('customer_update', args => {
+    console.log('Customer update event', args)
+  })
+  console.log('Initial data', data)
 
   // test map with sample position data
   const [position, setPosition] = useState(CityCenter)
