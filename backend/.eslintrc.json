@@ -1,0 +1,6 @@
+{
+  "extends": "@sunshinesmile",
+  "env": {
+    "jest": true
+  }
+}

@@ -1,0 +1,41 @@
+#!/usr/bin/env node
+
+const http = require('http')
+const socketIO = require('socket.io')
+
+const app = require('../src/app')
+const socketApp = require('../src/socket')
+const {PORT} = require('~/configs/env')
+
+const server = http.createServer(app.callback())
+const io = socketIO(server)
+
+io.on('connection', function onSocketConnection(socket) {
+  console.log(`[Socket] Client ${socket.id} connected`)
+  socketApp(socket, io)
+})
+
+server.on('listening', function onListening() {
+  const addr = server.address()
+  const uri = typeof addr === 'string' ? addr : `http://localhost:${addr.port}`
+  console.log(`[Server] Listening on ${uri}`)
+})
+
+server.on('error', function onError(err) {
+  if (err.syscall !== 'listen') throw err
+
+  switch (err.code) {
+    case 'EACCES':
+      console.error(`Port ${PORT} requires elevated privileges`)
+      process.exit(1)
+
+    case 'EADDRINUSE':
+      console.error(`Port ${PORT} is already in use`)
+      process.exit(1)
+
+    default:
+      throw err
+  }
+})
+
+server.listen(PORT)

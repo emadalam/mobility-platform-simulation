@@ -1,0 +1,62 @@
+{
+  "name": "mobility-platform-simulation-backend",
+  "version": "1.0.0",
+  "description": "Mobility platform simulation backend",
+  "main": "./bin/www",
+  "scripts": {
+    "start": "NODE_ENV=production node ./bin/www",
+    "dev": "NODE_ENV=development nodemon ./bin/www",
+    "test": "NODE_ENV=test jest"
+  },
+  "keywords": [
+    "mobility",
+    "simulation"
+  ],
+  "author": "Emad Alam <alam@emad.in>",
+  "license": "ISC",
+  "engines": {
+    "node": ">=8.12.0"
+  },
+  "_moduleAliases": {
+    "~": "./src"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ],
+    "coverageReporters": [
+      "text",
+      "lcov"
+    ],
+    "moduleNameMapper": {
+      "~/(.*)$": "<rootDir>/src/$1"
+    },
+    "testEnvironment": "node"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "{.,**}/__mocks/*",
+      "{.,**}/__tests__/*"
+    ],
+    "ext": "js,.json"
+  },
+  "devDependencies": {
+    "@sunshinesmile/eslint-config": "^1.1.2",
+    "eslint": "^5.15.0",
+    "jest": "^24.1.0",
+    "nodemon": "^1.18.10"
+  },
+  "dependencies": {
+    "envalid": "^4.2.2",
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-compress": "^3.0.0",
+    "koa-etag": "^3.0.0",
+    "koa-helmet": "^4.0.0",
+    "koa-pino-logger": "^2.1.3",
+    "koa-router": "^7.4.0",
+    "module-alias": "^2.2.0",
+    "mongoose": "^5.4.20",
+    "socket.io": "^2.2.0"
+  }
+}
